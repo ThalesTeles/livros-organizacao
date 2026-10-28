@@ -1,0 +1,11 @@
+# Segredos (chaves de API e destino do rclone)
+.env
+
+# Ambiente virtual e artefatos do Python
+.venv/
+__pycache__/
+
+# Gerados pelo organizador
+cache/
+backups/
+.lock

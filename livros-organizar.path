@@ -1,0 +1,10 @@
+[Unit]
+Description=Vigia a pasta de livros da faculdade (um livro novo dispara livros-organizar.service)
+
+[Path]
+# Só o nível de cima da pasta é vigiado: jogue o livro direto em livros/, não em subpastas.
+PathChanged=%h/documents/estudos/faculdade/livros
+Unit=livros-organizar.service
+
+[Install]
+WantedBy=default.target

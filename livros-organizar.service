@@ -1,0 +1,13 @@
+[Unit]
+Description=Organiza livros novos da faculdade (identifica, classifica pelo PPC, cria links e atualiza o Drive)
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/documents/estudos/faculdade/livros-organizacao
+# O script já lê a chave e o LIVROS_RCLONE de livros-organizacao/.env; este arquivo é opcional (o "-" ignora se não existir).
+EnvironmentFile=-%h/.config/livros-organizar.env
+# O python TEM que ser o do venv que tem o pacote "anthropic". Descubra o caminho com o venv ativo:  which python
+# (aqui: o venv fica dentro de livros-organizacao/). Sem --rclone (e sem LIVROS_RCLONE no .env) não envia nada ao Drive.
+ExecStart=%h/documents/estudos/faculdade/livros-organizacao/.venv/bin/python %h/documents/estudos/faculdade/livros-organizacao/organizar_livros.py novos --rclone gdrive:faculdade
