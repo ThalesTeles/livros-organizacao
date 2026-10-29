@@ -10,4 +10,4 @@ WorkingDirectory=%h/documents/estudos/faculdade/livros-organizacao
 EnvironmentFile=-%h/.config/livros-organizar.env
 # O python TEM que ser o do venv que tem o pacote "anthropic". Descubra o caminho com o venv ativo:  which python
 # (aqui: o venv fica dentro de livros-organizacao/). Sem --rclone (e sem LIVROS_RCLONE no .env) não envia nada ao Drive.
-ExecStart=%h/documents/estudos/faculdade/livros-organizacao/.venv/bin/python %h/documents/estudos/faculdade/livros-organizacao/organizar_livros.py novos --rclone gdrive:faculdade
+ExecStart=%h/documents/estudos/faculdade/livros-organizacao/.venv/bin/python %h/documents/estudos/faculdade/livros-organizacao/organizar_livros.py novos --rclone gdrive:faculdade-livros

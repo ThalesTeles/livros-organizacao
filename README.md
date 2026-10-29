@@ -56,7 +56,7 @@ No computador (os caminhos abaixo são os padrões):
         └── complementar/
 ```
 
-No Google Drive (destino `gdrive:faculdade`, por exemplo):
+No Google Drive (destino `gdrive:faculdade-livros`, por exemplo):
 
 ```
 faculdade/
@@ -130,7 +130,7 @@ Só uma das chaves também funciona (usa só aquele provedor). Na camada gratuit
 4. `~/.config/livros-organizar.env`
 
 ```bash
-printf 'ANTHROPIC_API_KEY=sk-ant-...\nLIVROS_RCLONE=gdrive:faculdade\n' > .env
+printf 'ANTHROPIC_API_KEY=sk-ant-...\nLIVROS_RCLONE=gdrive:faculdade-livros\n' > .env
 chmod 600 .env     # e não versione este arquivo
 ```
 
@@ -143,7 +143,7 @@ chmod 600 .env     # e não versione este arquivo
 | `LIVROS_LLM` | `auto` (padrão: Gemini → Claude), `gemini` (só Gemini) ou `claude` (só Claude) | ambiente ou `.env` |
 | `LIVROS_MODELO_GEMINI` / `LIVROS_MODELO_CLAUDE` | trocam os modelos (padrão `gemini-2.5-flash` / `claude-haiku-4-5-20251001`) | ambiente ou `.env` |
 | `LIVROS_GEMINI_ESPERA_MAX` | segundos que vale esperar um limite "por minuto" do Gemini antes de trocar (padrão 45) | ambiente ou `.env` |
-| `LIVROS_RCLONE` | destino do Drive, ex.: `gdrive:faculdade`. **Sem isso, nada é enviado ao Drive.** | ambiente ou `.env` |
+| `LIVROS_RCLONE` | destino do Drive, ex.: `gdrive:faculdade-livros`. **Sem isso, nada é enviado ao Drive.** | ambiente ou `.env` |
 | `LIVROS_RCLONE_ARGS` | opções extras do rclone, ex.: `--checksum` | ambiente ou `.env` |
 | `LIVROS_RAIZ` | se a sua pasta não for `~/documents/estudos/faculdade` | **só no ambiente** (`export`), não no `.env` |
 
@@ -305,7 +305,7 @@ Notas sobre as opções:
 
 ```bash
 rclone listremotes                                  # ex.: gdrive:
-echo 'LIVROS_RCLONE=gdrive:faculdade' >> .env       # pasta de destino no Drive
+echo 'LIVROS_RCLONE=gdrive:faculdade-livros' >> .env       # pasta de destino no Drive
 python3 organizar_livros.py drive --simular
 python3 organizar_livros.py drive --rclone-args=--dry-run   # nada é enviado
 python3 organizar_livros.py drive
